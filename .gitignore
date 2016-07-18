@@ -1,1 +1,3 @@
 /software/V-USB/Win32
+*.workspace
+*.pdsbak
