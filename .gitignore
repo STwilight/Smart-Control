@@ -1,3 +1,6 @@
 /software/V-USB/Win32
 *.workspace
 *.pdsbak
+*.d
+*.o
+/hardware/main-device/firmware-obsoleted
