@@ -1,73 +1,35 @@
-/*
-             LUFA Library
-     Copyright (C) Dean Camera, 2015.
 
-  dean [at] fourwalledcubicle [dot] com
-           www.lufa-lib.org
-*/
-
-/*
-  Copyright 2015  Dean Camera (dean [at] fourwalledcubicle [dot] com)
-
-  Permission to use, copy, modify, distribute, and sell this
-  software and its documentation for any purpose is hereby granted
-  without fee, provided that the above copyright notice appear in
-  all copies and that both that the copyright notice and this
-  permission notice and warranty disclaimer appear in supporting
-  documentation, and that the name of the author not be used in
-  advertising or publicity pertaining to distribution of the
-  software without specific, written prior permission.
-
-  The author disclaims all warranties with regard to this
-  software, including all implied warranties of merchantability
-  and fitness.  In no event shall the author be liable for any
-  special, indirect or consequential damages or any damages
-  whatsoever resulting from loss of use, data or profits, whether
-  in an action of contract, negligence or other tortious action,
-  arising out of or in connection with the use or performance of
-  this software.
-*/
-
-/** \file
+/** Файл с описанием дескрипторов библиотеки LUFA
  *
- *  USB Device Descriptors, for library use when in USB device mode. Descriptors are special
- *  computer-readable structures which the host requests upon device enumeration, to determine
- *  the device's capabilities and functions.
+ *  Дополнительная информация доступна по ссылке:
+ *  http://we.easyelectronics.ru/AVR/nebolshoy-primer-s-lufa-hidapi.html
+ *
  */
 
 #include "Descriptors.h"
 
-/** HID class report descriptor. This is a special descriptor constructed with values from the
- *  USBIF HID class specification to describe the reports and capabilities of the HID device. This
- *  descriptor is parsed by the host and its contents used to determine what data (and in what encoding)
- *  the device will send, and what it may be sent back from the host. Refer to the HID specification for
- *  more details on HID report descriptors.
- */
+/* Структура, описывающая дескриптор отчета HID-класса */
 const USB_Descriptor_HIDReport_Datatype_t PROGMEM GenericReport[] =
 {
-	HID_RI_USAGE_PAGE(16, 0xFF00), /* Vendor Page 0 */
-	HID_RI_USAGE(8, 0x01), /* Vendor Usage 1 */
-	HID_RI_COLLECTION(8, 0x01), /* Vendor Usage 1 */
-	    HID_RI_USAGE(8, 0x02), /* Vendor Usage 2 */
+	HID_RI_USAGE_PAGE(16, 0xFF00),	// Vendor Page 0
+	HID_RI_USAGE(8, 0x01),			// Vendor Usage 1
+	HID_RI_COLLECTION(8, 0x01),		// Vendor Usage 1
+	    HID_RI_USAGE(8, 0x02),		// Vendor Usage 2
 	    HID_RI_LOGICAL_MINIMUM(8, 0x00),
 	    HID_RI_LOGICAL_MAXIMUM(8, 0xFF),
 	    HID_RI_REPORT_SIZE(8, 0x08),
-	    HID_RI_REPORT_COUNT(8, GENERIC_REPORT_SIZE),
+	    HID_RI_REPORT_COUNT(8, IN_REPORT_SIZE),		// Описание IN-отчета (данные от устройства)
 	    HID_RI_INPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE),
-	    HID_RI_USAGE(8, 0x03), /* Vendor Usage 3 */
+	    HID_RI_USAGE(8, 0x03),		// Vendor Usage 3
 	    HID_RI_LOGICAL_MINIMUM(8, 0x00),
 	    HID_RI_LOGICAL_MAXIMUM(8, 0xFF),
 	    HID_RI_REPORT_SIZE(8, 0x08),
-	    HID_RI_REPORT_COUNT(8, GENERIC_REPORT_SIZE),
+	    HID_RI_REPORT_COUNT(8, OUT_REPORT_SIZE),	// Описание OUT-отчета (данные от хоста)
 	    HID_RI_OUTPUT(8, HID_IOF_DATA | HID_IOF_VARIABLE | HID_IOF_ABSOLUTE | HID_IOF_NON_VOLATILE),
 	HID_RI_END_COLLECTION(0),
 };
 
-/** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall
- *  device characteristics, including the supported USB version, control endpoint size and the
- *  number of device configurations. The descriptor is read out by the USB host when the enumeration
- *  process begins.
- */
+/* Структура, описывающая дескриптор HID-устройства */
 const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
 {
 	.Header                 = {.Size = sizeof(USB_Descriptor_Device_t), .Type = DTYPE_Device},
@@ -79,8 +41,8 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
 
 	.Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,
 
-	.VendorID               = 0x03EB,
-	.ProductID              = 0x204F,
+	.VendorID               = 0x03EB,	// VID устройства
+	.ProductID              = 0x204F,	// HID устройства
 	.ReleaseNumber          = VERSION_BCD(0,0,1),
 
 	.ManufacturerStrIndex   = STRING_ID_Manufacturer,
