@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2016.07.25 15:59:35.498,=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2016.07.25 15:59:36.805,=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2016.07.25 16:01:25.819,D:\PROJECTS\AVR\Smart-Control\software\main.cpp=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2016.07.25 16:01:25.819,D:\PROJECTS\AVR\Smart-Control\software\main.fmx=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2016.07.25 16:01:25.819,D:\PROJECTS\AVR\Smart-Control\software\main.h=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
+    <Transaction>2016.07.25 16:01:36.481,D:\PROJECTS\AVR\Smart-Control\software\Project1PCH1.h=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2016.07.25 16:01:47.382,D:\PROJECTS\AVR\Smart-Control\software\Smart-ControlPCH1.h=D:\PROJECTS\AVR\Smart-Control\software\Project1PCH1.h</Transaction>
+    <Transaction>2016.07.25 16:01:47.399,D:\PROJECTS\AVR\Smart-Control\software\Smart-Control.cbproj=C:\Users\Symrak\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

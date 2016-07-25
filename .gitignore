@@ -4,3 +4,4 @@
 *.d
 *.o
 /hardware/main-device/firmware-obsoleted
+/software/Win32
