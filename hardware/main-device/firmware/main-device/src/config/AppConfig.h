@@ -3,9 +3,7 @@
 
 #ifndef _APP_CONFIG_H_
 #define _APP_CONFIG_H_
-    /** Задание размеров OUT (от хоста устройству)
-	 *  и IN (от устройства хосту) отчетов в байтах
-	 */
-	#define OUT_REPORT_SIZE	4
-    #define IN_REPORT_SIZE	7
+    /* Задание размеров OUTи IN отчетов */
+	#define OUT_REPORT_SIZE	4	// Размер входного отчета с данными (от хоста), байт
+    #define IN_REPORT_SIZE	7	// Размер выходного отчета с данными (от устройства), байт
 #endif

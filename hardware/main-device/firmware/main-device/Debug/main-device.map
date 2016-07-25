@@ -3839,7 +3839,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xc7c
+.text           0x00000000      0xc70
  *(.vectors)
  .vectors       0x00000000       0x74 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
                 0x00000000                __vector_default
@@ -3854,53 +3854,53 @@ END GROUP
                 0x00000074                __trampolines_end = .
  *(.progmem*)
  .progmem.data.ProductString
-                0x00000074       0x2e Descriptors.o
+                0x00000074       0x2c Descriptors.o
                 0x00000074                ProductString
  .progmem.data.ManufacturerString
-                0x000000a2       0x1a Descriptors.o
-                0x000000a2                ManufacturerString
+                0x000000a0       0x10 Descriptors.o
+                0x000000a0                ManufacturerString
  .progmem.data.LanguageString
-                0x000000bc        0x4 Descriptors.o
-                0x000000bc                LanguageString
+                0x000000b0        0x4 Descriptors.o
+                0x000000b0                LanguageString
  .progmem.data.ConfigurationDescriptor
-                0x000000c0       0x29 Descriptors.o
-                0x000000c0                ConfigurationDescriptor
+                0x000000b4       0x29 Descriptors.o
+                0x000000b4                ConfigurationDescriptor
  .progmem.data.DeviceDescriptor
-                0x000000e9       0x12 Descriptors.o
-                0x000000e9                DeviceDescriptor
+                0x000000dd       0x12 Descriptors.o
+                0x000000dd                DeviceDescriptor
  .progmem.data.GenericReport
-                0x000000fb       0x20 Descriptors.o
-                0x000000fb                GenericReport
-                0x0000011c                . = ALIGN (0x2)
- *fill*         0x0000011b        0x1 
+                0x000000ef       0x20 Descriptors.o
+                0x000000ef                GenericReport
+                0x00000110                . = ALIGN (0x2)
+ *fill*         0x0000010f        0x1 
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000011c                __ctors_start = .
+                0x00000110                __ctors_start = .
  *(.ctors)
-                0x0000011c                __ctors_end = .
-                0x0000011c                __dtors_start = .
+                0x00000110                __ctors_end = .
+                0x00000110                __dtors_start = .
  *(.dtors)
-                0x0000011c                __dtors_end = .
+                0x00000110                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000011c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
-                0x0000011c                __init
+ .init0         0x00000110        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
+                0x00000110                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000011c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
+ .init2         0x00000110        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000128       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_copy_data.o)
-                0x00000128                __do_copy_data
- .init4         0x0000013e       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_clear_bss.o)
-                0x0000013e                __do_clear_bss
+ .init4         0x0000011c       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_copy_data.o)
+                0x0000011c                __do_copy_data
+ .init4         0x00000132       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_clear_bss.o)
+                0x00000132                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -3911,108 +3911,108 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000014e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
+ .init9         0x00000142        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
  *(.init9)
  *(.text)
- .text          0x00000152        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
-                0x00000152                __vector_22
-                0x00000152                __vector_28
-                0x00000152                __vector_1
-                0x00000152                __vector_24
-                0x00000152                __vector_12
-                0x00000152                __bad_interrupt
-                0x00000152                __vector_6
-                0x00000152                __vector_3
-                0x00000152                __vector_23
-                0x00000152                __vector_25
-                0x00000152                __vector_13
-                0x00000152                __vector_17
-                0x00000152                __vector_19
-                0x00000152                __vector_7
-                0x00000152                __vector_27
-                0x00000152                __vector_5
-                0x00000152                __vector_4
-                0x00000152                __vector_9
-                0x00000152                __vector_2
-                0x00000152                __vector_21
-                0x00000152                __vector_15
-                0x00000152                __vector_8
-                0x00000152                __vector_26
-                0x00000152                __vector_14
-                0x00000152                __vector_10
-                0x00000152                __vector_16
-                0x00000152                __vector_18
-                0x00000152                __vector_20
-                0x00000154                . = ALIGN (0x2)
+ .text          0x00000146        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/at90usb162/avr35/crtat90usb162.o
+                0x00000146                __vector_22
+                0x00000146                __vector_28
+                0x00000146                __vector_1
+                0x00000146                __vector_24
+                0x00000146                __vector_12
+                0x00000146                __bad_interrupt
+                0x00000146                __vector_6
+                0x00000146                __vector_3
+                0x00000146                __vector_23
+                0x00000146                __vector_25
+                0x00000146                __vector_13
+                0x00000146                __vector_17
+                0x00000146                __vector_19
+                0x00000146                __vector_7
+                0x00000146                __vector_27
+                0x00000146                __vector_5
+                0x00000146                __vector_4
+                0x00000146                __vector_9
+                0x00000146                __vector_2
+                0x00000146                __vector_21
+                0x00000146                __vector_15
+                0x00000146                __vector_8
+                0x00000146                __vector_26
+                0x00000146                __vector_14
+                0x00000146                __vector_10
+                0x00000146                __vector_16
+                0x00000146                __vector_18
+                0x00000146                __vector_20
+                0x00000148                . = ALIGN (0x2)
  *(.text.*)
  .text.CALLBACK_USB_GetDescriptor
-                0x00000154       0xa0 Descriptors.o
-                0x00000154                CALLBACK_USB_GetDescriptor
+                0x00000148       0xa0 Descriptors.o
+                0x00000148                CALLBACK_USB_GetDescriptor
  .text.hardwareInit
-                0x000001f4       0x32 GenericHID.o
-                0x000001f4                hardwareInit
- .text.HIDTask  0x00000226       0x82 GenericHID.o
-                0x00000226                HIDTask
- .text.main     0x000002a8        0xa GenericHID.o
-                0x000002a8                main
+                0x000001e8       0x32 GenericHID.o
+                0x000001e8                hardwareInit
+ .text.HIDTask  0x0000021a       0x82 GenericHID.o
+                0x0000021a                HIDTask
+ .text.main     0x0000029c        0xa GenericHID.o
+                0x0000029c                main
  .text.Endpoint_Write_Stream_LE
-                0x000002b2       0xba src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x000002b2                Endpoint_Write_Stream_LE
+                0x000002a6       0xba src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x000002a6                Endpoint_Write_Stream_LE
  .text.Endpoint_Read_Stream_LE
-                0x0000036c       0xba src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x0000036c                Endpoint_Read_Stream_LE
+                0x00000360       0xba src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x00000360                Endpoint_Read_Stream_LE
  .text.Endpoint_Write_Control_Stream_LE
-                0x00000426       0xf2 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x00000426                Endpoint_Write_Control_Stream_LE
+                0x0000041a       0xf2 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000041a                Endpoint_Write_Control_Stream_LE
  .text.Endpoint_Write_Control_PStream_LE
-                0x00000518       0xf8 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x00000518                Endpoint_Write_Control_PStream_LE
+                0x0000050c       0xf8 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000050c                Endpoint_Write_Control_PStream_LE
  .text.Endpoint_ConfigureEndpoint_Prv
-                0x00000610       0xcc src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x00000610                Endpoint_ConfigureEndpoint_Prv
+                0x00000604       0xcc src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x00000604                Endpoint_ConfigureEndpoint_Prv
  .text.Endpoint_ClearStatusStage
-                0x000006dc       0x48 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x000006dc                Endpoint_ClearStatusStage
+                0x000006d0       0x48 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x000006d0                Endpoint_ClearStatusStage
  .text.Endpoint_WaitUntilReady
-                0x00000724       0x82 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x00000724                Endpoint_WaitUntilReady
+                0x00000718       0x82 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x00000718                Endpoint_WaitUntilReady
  .text.USB_ResetInterface
-                0x000007a6       0x66 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x000007a6                USB_ResetInterface
+                0x0000079a       0x66 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000079a                USB_ResetInterface
  .text.USB_Init
-                0x0000080c       0x14 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000080c                USB_Init
+                0x00000800       0x14 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x00000800                USB_Init
  .text.USB_INT_DisableAllInterrupts
-                0x00000820        0x6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000820                USB_INT_DisableAllInterrupts
+                0x00000814        0x6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000814                USB_INT_DisableAllInterrupts
  .text.USB_INT_ClearAllInterrupts
-                0x00000826        0x6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000826                USB_INT_ClearAllInterrupts
+                0x0000081a        0x6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000081a                USB_INT_ClearAllInterrupts
  .text.__vector_11
-                0x0000082c      0x13c src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000082c                __vector_11
+                0x00000820      0x13c src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000820                __vector_11
  .text.USB_Device_ProcessControlRequest
-                0x00000968      0x2da src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x00000968                USB_Device_ProcessControlRequest
+                0x0000095c      0x2da src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000095c                USB_Device_ProcessControlRequest
  .text.USB_Event_Stub
-                0x00000c42        0x2 src/LUFA/LUFA/Drivers/USB/Core/Events.o
-                0x00000c42                EVENT_USB_Device_ConfigurationChanged
-                0x00000c42                EVENT_USB_Device_Connect
-                0x00000c42                EVENT_USB_Device_WakeUp
-                0x00000c42                USB_Event_Stub
-                0x00000c42                EVENT_USB_Device_Suspend
-                0x00000c42                EVENT_USB_Device_StartOfFrame
-                0x00000c42                EVENT_USB_Device_Disconnect
-                0x00000c42                EVENT_USB_Device_Reset
-                0x00000c42                EVENT_USB_Device_ControlRequest
+                0x00000c36        0x2 src/LUFA/LUFA/Drivers/USB/Core/Events.o
+                0x00000c36                EVENT_USB_Device_ConfigurationChanged
+                0x00000c36                EVENT_USB_Device_Connect
+                0x00000c36                EVENT_USB_Device_WakeUp
+                0x00000c36                USB_Event_Stub
+                0x00000c36                EVENT_USB_Device_Suspend
+                0x00000c36                EVENT_USB_Device_StartOfFrame
+                0x00000c36                EVENT_USB_Device_Disconnect
+                0x00000c36                EVENT_USB_Device_Reset
+                0x00000c36                EVENT_USB_Device_ControlRequest
  .text.USB_USBTask
-                0x00000c44       0x34 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
-                0x00000c44                USB_USBTask
-                0x00000c78                . = ALIGN (0x2)
+                0x00000c38       0x34 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
+                0x00000c38                USB_USBTask
+                0x00000c6c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000c78        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_exit.o)
-                0x00000c78                _exit
-                0x00000c78                exit
+ .fini9         0x00000c6c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_exit.o)
+                0x00000c6c                _exit
+                0x00000c6c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -4031,11 +4031,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000c78        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_exit.o)
+ .fini0         0x00000c6c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr35\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000c7c                _etext = .
+                0x00000c70                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000c7c
+.data           0x00800100        0x0 load address 0x00000c70
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -4060,8 +4060,8 @@ END GROUP
                 0x00800104                USB_DeviceState
                 0x00800105                USB_ControlRequest
                 0x0080010d                PROVIDE (__bss_end, .)
-                0x00000c7c                __data_load_start = LOADADDR (.data)
-                0x00000c7c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000c70                __data_load_start = LOADADDR (.data)
+                0x00000c70                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080010d        0x0
                 0x0080010d                PROVIDE (__noinit_start, .)
@@ -4212,25 +4212,25 @@ END GROUP
  .debug_frame   0x000008ac       0x24 src/LUFA/LUFA/Drivers/USB/Core/Events.o
  .debug_frame   0x000008d0       0x2c src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_str      0x00000000    0x13bf7
+.debug_str      0x00000000    0x13c45
  *(.debug_str)
  .debug_str     0x00000000    0x11e9c Descriptors.o
                               0x1215a (size before relaxing)
  .debug_str     0x00011e9c      0x7f3 GenericHID.o
                               0x12244 (size before relaxing)
- .debug_str     0x0001268f      0xa07 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_str     0x0001268f      0xa55 src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
                                0xc557 (size before relaxing)
- .debug_str     0x00013096      0x271 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_str     0x000130e4      0x271 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
                                0xbbfa (size before relaxing)
- .debug_str     0x00013307      0x27b src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_str     0x00013355      0x27b src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
                                0xbb31 (size before relaxing)
- .debug_str     0x00013582      0x10e src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_str     0x000135d0      0x10e src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
                                0xbabb (size before relaxing)
- .debug_str     0x00013690      0x496 src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_str     0x000136de      0x496 src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
                                0xbfcb (size before relaxing)
- .debug_str     0x00013b26       0x53 src/LUFA/LUFA/Drivers/USB/Core/Events.o
+ .debug_str     0x00013b74       0x53 src/LUFA/LUFA/Drivers/USB/Core/Events.o
                                0xadbe (size before relaxing)
- .debug_str     0x00013b79       0x7e src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_str     0x00013bc7       0x7e src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
                                0xb979 (size before relaxing)
 
 .debug_loc      0x00000000     0x357f
