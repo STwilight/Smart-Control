@@ -23,26 +23,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='iOSDevice32' and '$(Base)'=='true') or '$(Base_iOSDevice32)'!=''">
-        <Base_iOSDevice32>true</Base_iOSDevice32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='iOSDevice64' and '$(Base)'=='true') or '$(Base_iOSDevice64)'!=''">
-        <Base_iOSDevice64>true</Base_iOSDevice64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Base)'=='true') or '$(Base_Android)'!=''">
-        <Base_Android>true</Base_Android>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
-        <Base_OSX32>true</Base_OSX32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
@@ -105,7 +85,6 @@
         <IncludePath>$(BDSINCLUDE)\windows\fmx;$(IncludePath)</IncludePath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <BCC_PCHName_Clang>Smart-ControlPCH1.h</BCC_PCHName_Clang>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -115,20 +94,7 @@
         <IncludePath>$(BDSINCLUDE)\windows\fmx;$(IncludePath)</IncludePath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <BCC_PCHName_Clang>Smart-ControlPCH1.h</BCC_PCHName_Clang>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_iOSDevice32)'!=''">
-        <IncludePath>$(BDSINCLUDE)\ios\fmx;$(IncludePath)</IncludePath>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_iOSDevice64)'!=''">
-        <IncludePath>$(BDSINCLUDE)\ios\fmx;$(IncludePath)</IncludePath>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Android)'!=''">
-        <IncludePath>$(BDSINCLUDE)\android\fmx;$(IncludePath)</IncludePath>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
-        <IncludePath>$(BDSINCLUDE)\osx\fmx;$(IncludePath)</IncludePath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -153,9 +119,13 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DynamicRTL>false</DynamicRTL>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <LinkPackageStatics>rtl.lib;fmx.lib</LinkPackageStatics>
+        <UsePackages>false</UsePackages>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <LinkPackageImports>rtl.bpi;fmx.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -168,14 +138,15 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <BCC_PCHName_Clang>Smart-ControlPCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <BCC_PCHName_Clang>Smart-ControlPCH1.h</BCC_PCHName_Clang>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="hidlibrary.h">
+            <BuildOrder>3</BuildOrder>
+        </None>
         <CppCompile Include="main.cpp">
             <Form>Form1</Form>
             <FormType>fmx</FormType>
@@ -190,6 +161,8 @@
             <PCH>true</PCH>
         </PCHCompile>
         <FormResources Include="main.fmx"/>
+        <FormResources Include="main.Windows.fmx"/>
+        <FormResources Include="main.Surface.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -216,8 +189,18 @@
                     <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k230.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp230.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="2">
+                <DeployFile LocalName=".\Win32\Debug\Smart-Control.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>Smart-Control.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -261,12 +244,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Smart-Control.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>Smart-Control.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -676,10 +653,6 @@
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice32">False</Platform>
-                <Platform value="iOSDevice64">False</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>

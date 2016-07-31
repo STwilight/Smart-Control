@@ -1,0 +1,9 @@
+inherited Form1_Windows: TForm1_Windows
+  DesignerMasterStyle = 0
+  inherited GroupBox3: TGroupBox
+    inherited Memo1: TMemo
+      Viewport.Width = 93.000000000000000000
+      Viewport.Height = 37.000000000000000000
+    end
+  end
+end

@@ -5,3 +5,6 @@
 *.o
 /hardware/main-device/firmware-obsoleted
 /software/Win32
+/software/__history
+/software/__recovery
+/temp

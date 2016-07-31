@@ -3,84 +3,307 @@ object Form1: TForm1
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = Single
-  Caption = 'Smart Control Terminal'
-  ClientHeight = 161
-  ClientWidth = 321
+  Caption = 'Smart Control'
+  ClientHeight = 269
+  ClientWidth = 457
   Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object StatusBar1: TStatusBar
+    Position.Y = 241.000000000000000000
+    ShowSizeGrip = False
+    Size.Width = 457.000000000000000000
+    Size.Height = 28.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    TabStop = False
+    object Button3: TButton
+      CanFocus = False
+      Enabled = False
+      Position.X = 6.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 16.000000000000000000
+      Size.Height = 16.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TabStop = False
+    end
+    object Label2: TLabel
+      Position.X = 28.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 193.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = #1054#1090#1082#1083#1102#1095#1077#1085#1086
+    end
+  end
   object Button1: TButton
     Position.X = 232.000000000000000000
-    Position.Y = 8.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
     TabOrder = 2
-    Text = 'Connect'
+    Text = #1042#1099#1093#1086#1076
+    OnClick = appExit
   end
-  object Edit1: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
+  object GroupBox1: TGroupBox
+    StyledSettings = [Family, Size, FontColor, Other]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 225.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1054#1089#1074#1077#1097#1077#1085#1080#1077':'
+    TextSettings.Font.Style = [fsBold]
     TabOrder = 0
-    Text = 'VID'
-    Position.X = 8.000000000000000000
-    Position.Y = 8.000000000000000000
-  end
-  object StatusBar1: TStatusBar
-    Position.Y = 137.000000000000000000
-    ShowSizeGrip = True
-    Size.Width = 321.000000000000000000
-    Size.Height = 24.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 8
-  end
-  object Edit2: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 1
-    Text = 'PID'
-    Position.X = 120.000000000000000000
-    Position.Y = 8.000000000000000000
-  end
-  object Edit3: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 3
-    Text = 'Data To Transmit'
-    Position.X = 8.000000000000000000
-    Position.Y = 40.000000000000000000
-    Size.Width = 209.000000000000000000
-    Size.Height = 22.000000000000000000
-    Size.PlatformDefault = False
-  end
-  object Button2: TButton
-    Position.X = 232.000000000000000000
-    Position.Y = 40.000000000000000000
-    TabOrder = 4
-    Text = 'Send'
-  end
-  object Button3: TButton
-    Position.X = 232.000000000000000000
-    Position.Y = 72.000000000000000000
-    TabOrder = 6
-    Text = 'Get'
-  end
-  object Button4: TButton
-    Position.X = 232.000000000000000000
-    Position.Y = 104.000000000000000000
-    TabOrder = 7
-    Text = 'Exit'
-    OnClick = Button4Click
-  end
-  object Memo1: TMemo
-    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-    DataDetectorTypes = []
-    Lines.Strings = (
-      'Received Data')
-    Position.X = 8.000000000000000000
-    Position.Y = 72.000000000000000000
-    Size.Width = 209.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 5
     TabStop = False
-    Viewport.Width = 205.000000000000000000
-    Viewport.Height = 46.000000000000000000
+    object CheckBox0: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #1042#1099#1093#1086#1076' '#8470'1'
+      OnChange = setLight
+    end
+    object CheckBox1: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #1042#1099#1093#1086#1076' '#8470'2'
+      OnChange = setLight
+    end
+    object CheckBox2: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = #1042#1099#1093#1086#1076' '#8470'3'
+      OnChange = setLight
+    end
+    object CheckBox3: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = #1042#1099#1093#1086#1076' '#8470'4'
+      OnChange = setLight
+    end
+    object CheckBox4: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = #1042#1099#1093#1086#1076' '#8470'5'
+      OnChange = setLight
+    end
+    object CheckBox5: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = #1042#1099#1093#1086#1076' '#8470'6'
+      OnChange = setLight
+    end
+    object CheckBox6: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 168.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = #1042#1099#1093#1086#1076' '#8470'7'
+      OnChange = setLight
+    end
+    object CheckBox7: TCheckBox
+      Position.X = 16.000000000000000000
+      Position.Y = 192.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = #1042#1099#1093#1086#1076' '#8470'8'
+      OnChange = setLight
+    end
+    object CheckBox8: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = #1042#1099#1093#1086#1076' '#8470'9'
+      OnChange = setLight
+    end
+    object CheckBox9: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      Text = #1042#1099#1093#1086#1076' '#8470'10'
+      OnChange = setLight
+    end
+    object CheckBox10: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 10
+      Text = #1042#1099#1093#1086#1076' '#8470'11'
+      OnChange = setLight
+    end
+    object CheckBox11: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 96.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 11
+      Text = #1042#1099#1093#1086#1076' '#8470'12'
+      OnChange = setLight
+    end
+    object CheckBox12: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 120.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 12
+      Text = #1042#1099#1093#1086#1076' '#8470'13'
+      OnChange = setLight
+    end
+    object CheckBox13: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 13
+      Text = #1042#1099#1093#1086#1076' '#8470'14'
+      OnChange = setLight
+    end
+    object CheckBox14: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 168.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 14
+      Text = #1042#1099#1093#1086#1076' '#8470'15'
+      OnChange = setLight
+    end
+    object CheckBox15: TCheckBox
+      Position.X = 112.000000000000000000
+      Position.Y = 192.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 15
+      Text = #1042#1099#1093#1086#1076' '#8470'16'
+      OnChange = setLight
+    end
+  end
+  object GroupBox2: TGroupBox
+    StyledSettings = [Family, Size, FontColor, Other]
+    Position.X = 232.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 81.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1043#1088#1086#1084#1082#1086#1089#1090#1100':'
+    TextSettings.Font.Style = [fsBold]
+    TabOrder = 1
+    object Label1: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = #1059#1088#1086#1074#1077#1085#1100': 0%'
+    end
+    object TrackBar1: TTrackBar
+      CanParentFocus = True
+      Frequency = 1.000000000000000000
+      Max = 127.000000000000000000
+      Orientation = Horizontal
+      Position.X = 16.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 185.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      OnChange = setVolume
+    end
+  end
+  object GroupBox3: TGroupBox
+    StyledSettings = [Family, Size, FontColor, Other]
+    Position.X = 232.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.Height = 97.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Debug:'
+    TextSettings.Font.Style = [fsBold]
+    TabOrder = 6
+    TabStop = False
+    object Memo1: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Lines.Strings = (
+        'Light: 0x0000'
+        'Level: 0x7F')
+      Position.X = 8.000000000000000000
+      Position.Y = 19.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      TabStop = False
+      Viewport.Width = 93.000000000000000000
+      Viewport.Height = 37.000000000000000000
+    end
+    object Button2: TButton
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 112.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 96.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      TabStop = False
+      Text = 'TEST'
+      TextSettings.Font.Style = [fsBold]
+      OnClick = testButton
+    end
+    object CheckBox16: TCheckBox
+      IsChecked = True
+      Position.X = 8.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 201.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      TabStop = False
+      Text = 'Invert HEX volume level value'
+      OnChange = setVolume
+    end
   end
 end

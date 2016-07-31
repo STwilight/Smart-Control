@@ -1,0 +1,15 @@
+inherited Form1_Surface: TForm1_Surface
+  ClientHeight = 1920
+  ClientWidth = 1080
+  DesignerMasterStyle = 0
+  inherited StatusBar1: TStatusBar
+    Position.Y = 1892.000000000000000000
+    Size.Width = 1080.000000000000000000
+  end
+  inherited GroupBox3: TGroupBox
+    inherited Memo1: TMemo
+      Viewport.Width = 97.000000000000000000
+      Viewport.Height = 41.000000000000000000
+    end
+  end
+end
