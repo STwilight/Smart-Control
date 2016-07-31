@@ -12,6 +12,8 @@
 #include <FMX.Types.hpp>
 #include <FMX.Memo.hpp>
 #include <FMX.ScrollBox.hpp>
+#include <FMX.ImgList.hpp>
+#include <System.ImageList.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -44,10 +46,15 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox16;
 	TLabel *Label2;
 	TButton *Button3;
+	TTimer *Timer1;
+	TImageList *ImageList1;
 	void __fastcall appExit(TObject *Sender);
 	void __fastcall setVolume(TObject *Sender);
 	void __fastcall testButton(TObject *Sender);
 	void __fastcall setLight(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall deviceConnect(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

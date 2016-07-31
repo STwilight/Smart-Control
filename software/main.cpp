@@ -2,8 +2,12 @@
 #pragma hdrstop
 #include "main.h"
 
-/* Подключение библиотеки для обращения к функциям HID-устройства */
-#include "hidlibrary.h"
+/* Подключение библиотеки HIDAPI для обращения к функциям HID-устройства */
+#include "hidapi.h"
+
+/* Подключение дополнительных библиотек */
+#include <stdio.h>
+#include <stdlib.h>
 
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -12,35 +16,40 @@
 
 //-------------------------------- VARIABLES --------------------------------
 
-/* Объявление переменных */
-const char vendorName[]  = "ITProm";
-const char productName[] = "Smart Control Device";
+/* Идентификаторы VID и PID */
+#define VID 0x03EB
+#define PID 0x204F
 
-/** INFO:
- *	  Идентификаторы VID и PID задаются в идентификационной строке,
- *	  в файле hidlibrary.h, переменная 'const char idstring[]'.
- */
+// Строка описания продукта
+String productString = L"Smart Control Device";
 
-/* Размер выравнивания для структур равен 1 байт */
+// Указатель на структуру, описывающую HID-устройство
+hid_device *handle_device;
+
+// Размер выравнивания для структур равен 1 байт
 #pragma pack (push, 1)
 
 /* Описание структуры для передачи данных */
-struct config_t
+struct config_report
 {
-	// состояние управляющих выводов, 2 байта
+	// ID номер отчета, 1 байт
+	unsigned char report_ID;
+	// Состояние управляющих выводов, 2 байта
 	unsigned short int light;
-    // уровень громкости, 1 байт
+	// Уровень громкости, 1 байт
 	unsigned char volume_level;
 };
 
-/* Создание экземпляра структуры */
-struct config_t	DeviceConfig;
+/** INFO:
+ *    HIDAPI функции требуют наличия байта ReportID,
+ *    даже если устройство его не использует.
+ */
 
-/* Возвращение предыдущей настройки выравнивания для структур */
+// Создание экземпляра структуры для передачи данных
+struct config_report DeviceConfig;
+
+// Возвращение предыдущей настройки выравнивания для структур
 #pragma pack (pop)
-
-/* Создание экземпляра класса */
-HIDLibrary <config_t> hid;
 
 //-------------------------------- SYSTEM -----------------------------------
 
@@ -53,55 +62,66 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 //-------------------------------- USER -------------------------------------
 
-int deviceConnect(void)
+void __fastcall TForm1::deviceConnect(TObject *Sender)
 {
-    /* Метод поиска и подключения необходимого HID-устройства */
+	/* Метод поиска и подключения необходимого HID-устройства */
 
-	// Флаг соответствия устройства
-	int res = 0;
+	// Структура для поиска HID-устройств
+	struct hid_device_info *devs, *cur_dev;
 
-	/* Построение строки-идентификатора устройства */
-	string exampleDeviceName = vendorName;
-	exampleDeviceName += " ";
-	exampleDeviceName += productName;
+	// Установка отметки "Searching"
+	Button3->ImageIndex = 0;
+	// Вывод статуса
+	Label2->Text = "Поиск устройства...";
 
-    /* Получение количества HID-устройств в системе */
-	int n = hid.EnumerateHIDDevices();
+	// Запуск поиска HID-устройства
+	devs = hid_enumerate(VID, PID);
 
-	/* Поиск устройства в системе */
-	for (int i = 0; i < n; i++)
-	{
-        /* Подключение к устройству */
-		hid.Connect(i);
+	// Помещение найденных устройств с указанными VID и PID в динамический массив
+	cur_dev = devs;
 
-		/** Получение Vendor Name и Product Name устройства
-		 *  посредством функции GetConnectedDeviceName(), возвращающей
-		 *  строку вида 'Vendor_Name Product_Name'.
-		 *  Если полученное значение совпадает с сохраненным в
-		 *  переменной 'exampleDeviceName', то искомое устройство найдено:
-		 *  возвращаем 'res' равный единице, иначе – 'res' равен нулю.
-		 */
-		if (hid.GetConnectedDeviceName() == exampleDeviceName)
-		{
-			res = 1;
+	/* Поиск устройства по строке описания продукта 'Product Name' */
+	while (cur_dev) {
+		if ((cur_dev->product_string) == productString)
 			break;
-		}
+		cur_dev = cur_dev->next;
 	}
-	return res;
+
+	/* Если устройство найдено и успешно открыто... */
+	if (cur_dev && (handle_device = hid_open_path(cur_dev->path)))
+	{
+		// Остановка таймера, который вызывает данный метод
+		Timer1->Enabled = false;
+		// Установка отметки "Connected"
+		Button3->ImageIndex = 1;
+		// Вывод статуса
+		Label2->Text = "Устройство подключено";
+	}
+	else
+	{
+		// Установка отметки "Disconnected"
+		Button3->ImageIndex = 0;
+		//Button3->ImageIndex = 2;
+		// Вывод статуса
+		Label2->Text = "Поиск устройства...";
+		//Label2->Text = "Устройство не найдено";
+	}
+
+	// Удаление списка
+	hid_free_enumeration(devs);
 }
 
-void deviceSend(struct config_t Data)
+void deviceSend(struct config_report Data)
 {
 	/* Метод отправки данных HID-устройству */
 
-	// Выполнение отправки данных устройству
-	if (deviceConnect())
+	if (hid_write(handle_device, (const unsigned char*)&Data, sizeof(Data))==-1)
 	{
-		hid.SendData(&Data);
-		Form1->Label2->Text = "Подключено";
+		// Установка отметки "Error"
+		Form1->Button3->ImageIndex = 3;
+		// Вывод статуса
+		Form1->Label2->Text = "Ошибка отправки данных!";
 	}
-	else
-		Form1->Label2->Text = "Отключено";
 }
 
 void __fastcall TForm1::setLight(TObject *Sender)
@@ -165,21 +185,49 @@ void __fastcall TForm1::appExit(TObject *Sender)
 {
     /* Метод, вызываемый при нажатии кнопки выхода */
 
+    // Остановка таймера, который вызывает метод подключения устройства
+	if (Timer1->Enabled)
+		Timer1->Enabled = false;
+	else
+		hid_close(handle_device);
 	Application->Terminate();
+}
+
+void __fastcall TForm1::FormShow(TObject *Sender)
+{
+	/* Метод, вызываемый при отображении формы */
+
+	Timer1->Enabled = true;
+}
+
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    /* Метод, вызываемый при зыкрытии формы */
+
+	if (Timer1->Enabled)
+		Timer1->Enabled = false;
+	else
+		hid_close(handle_device);
 }
 
 //-------------------------------- DEBUG ------------------------------------
 
 void __fastcall TForm1::testButton(TObject *Sender)
 {
-    /* DEBUG: Метод тестовой кнопки */
+	/* DEBUG: Метод тестовой кнопки */
 
-	AnsiString tmpstr;
-	for (int i = 1; i < GroupBox1->ControlsCount; i++) {
-		if (GroupBox1->Controls->Items[i]->ClassName() == "TCheckBox")
-			tmpstr += ((TCheckBox*)GroupBox1->Controls->Items[i])->Text + ", " +
-					  ((TCheckBox*)GroupBox1->Controls->Items[i])->Name + ", i=" + StrToInt(i) + "\n";
-	}
-	ShowMessage(tmpstr);
 }
 
+//-------------------------------- SAMPLES ----------------------------------
+
+	/** Перечисление всех CheckBox в сообщении.
+	 *
+	 *	AnsiString tmpstr;
+	 *	for (int i = 1; i < GroupBox1->ControlsCount; i++) {
+	 *		if (GroupBox1->Controls->Items[i]->ClassName() == "TCheckBox")
+	 *			tmpstr += ((TCheckBox*)GroupBox1->Controls->Items[i])->Text + ", " +
+	 *					  ((TCheckBox*)GroupBox1->Controls->Items[i])->Name + ", i=" + StrToInt(i) + "\n";
+	 *	}
+	 *	ShowMessage(tmpstr);
+	 *
+	 */

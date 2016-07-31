@@ -8,8 +8,8 @@ inherited Form1_Surface: TForm1_Surface
   end
   inherited GroupBox3: TGroupBox
     inherited Memo1: TMemo
-      Viewport.Width = 97.000000000000000000
-      Viewport.Height = 41.000000000000000000
+      Viewport.Width = 93.000000000000000000
+      Viewport.Height = 37.000000000000000000
     end
   end
 end
